@@ -1,5 +1,7 @@
 <?php
 
+const MAX_DIM = 1920;
+
 function changeOrientation(GdImage $image, ?int $orientation): GdImage
 {
     $rotatedImage = $image;
@@ -47,6 +49,7 @@ function saveImage(int $quality, int $cropSquare, GdImage $image, string $ending
         }
     }
 
+    $image = resizeImage($image);
     $image = cropImage($cropSquare, $image);
 
     $newImagePath = str_replace('_old', 'new', $file);
@@ -109,6 +112,29 @@ function cropImage(int $cropSquare, GdImage $image): GdImage
     return $image;
 }
 
+function resizeImage(GdImage $image): GdImage
+{
+    $imageW = imagesx($image);
+    $imageH = imagesy($image);
+
+    $newW = $imageW;
+    $newH = $imageH;
+
+    // Square images included through equal
+    if ($imageW >= $imageH && $imageW > MAX_DIM) {
+        $newW = MAX_DIM;
+        $newH = (int) ($imageH * (MAX_DIM / $imageW));
+    } elseif ($imageH > $imageW && $imageH > MAX_DIM) {
+        $newW = (int) ($imageW * (MAX_DIM / $imageH));
+        $newH = MAX_DIM;
+    }
+
+    $new_image = imagecreatetruecolor($newW, $newH);
+    imagecopyresampled($new_image, $image, 0, 0, 0, 0, $newW, $newH, $imageW, $imageH);
+
+    return $new_image;
+}
+
 $quality = chooseQuality();
 $cropSquare = cropSquareInput();
 
@@ -133,7 +159,7 @@ if ($handle = opendir($old_dir)) {
                 break;
             case 'webp':
                 $image = imagecreatefromwebp($file);
-                break;
+                // no break
             default:
                 break;
         }
