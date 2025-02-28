@@ -1,6 +1,6 @@
 <?php
 
-function changeOrientation(GdImage $image, int|null $orientation): GdImage
+function changeOrientation(GdImage $image, ?int $orientation): GdImage
 {
     $rotatedImage = $image;
 
@@ -37,20 +37,22 @@ function changeOrientation(GdImage $image, int|null $orientation): GdImage
     return $rotatedImage;
 }
 
-function saveImage(int $quality, int $cropSquare, GdImage $image, string $ending, string $targetFile): void
+function saveImage(int $quality, int $cropSquare, GdImage $image, string $ending, string $file): void
 {
-    $exif = exif_read_data($targetFile);
+    if ('webp' != $ending) {
+        $exif = exif_read_data($file);
 
-    if (key_exists('Orientation', $exif)) {
-        $image = changeOrientation($image, $exif['Orientation']);
+        if ($exif && key_exists('Orientation', $exif)) {
+            $image = changeOrientation($image, $exif['Orientation']);
+        }
     }
 
     $image = cropImage($cropSquare, $image);
 
-    $newImagePath = str_replace($ending, 'webp', $targetFile);
-    $newImagePath = str_replace(strtoupper($ending), 'webp', $newImagePath);
-    $newImagePath = str_replace('_old', 'new', $newImagePath);
+    $newImagePath = str_replace('_old', 'new', $file);
 
+    $newImagePath = str_replace($ending, 'webp', $newImagePath);
+    $newImagePath = str_replace(strtoupper($ending), 'webp', $newImagePath);
     imagewebp($image, $newImagePath, $quality);
 
     imagedestroy($image);
@@ -116,24 +118,28 @@ if ($handle = opendir($old_dir)) {
     while (false !== ($file = readdir($handle))) {
         echo $old_dir.$file."\n\r";
 
-        $targetFile = $old_dir.$file;
-        $ending = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $file = $old_dir.$file;
+        $ending = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+
+        $image = false;
 
         switch ($ending) {
             case 'jpg':
-                $image = imagecreatefromjpeg($targetFile);
-                if ($image) {
-                    saveImage($quality, $cropSquare, $image, $ending, $targetFile);
-                }
+            case 'jpeg':
+                $image = imagecreatefromjpeg($file);
                 break;
             case 'png':
-                $image = imagecreatefrompng($targetFile);
-                if ($image) {
-                    saveImage($quality, $cropSquare, $image, $ending, $targetFile);
-                }
+                $image = imagecreatefrompng($file);
+                break;
+            case 'webp':
+                $image = imagecreatefromwebp($file);
                 break;
             default:
                 break;
+        }
+
+        if ($image) {
+            saveImage($quality, $cropSquare, $image, $ending, $file);
         }
     }
 }
