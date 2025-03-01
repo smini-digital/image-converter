@@ -40,6 +40,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#license">License</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -67,7 +68,7 @@ You can also adjust the following:
 
 ### Prerequisites
 
-[![Prerequisite Screenshot][prerequisite-screenshot]]
+![Prerequisite Screenshot][prerequisite-screenshot]
 
 1. Download the imageConverter.php file. In the same folder create two folders: '_old' and 'new'.
 2. Add all images you want to convert to the '_old' folder.
@@ -78,6 +79,56 @@ You can also adjust the following:
 Make sure you have [PHP](https://www.php.net/downloads.php) installed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- USAGE -->
+## Usage
+
+Navigate to your main fold in your console or terminal and run the php file:
+
+```sh
+  php imageConverter.php
+```
+
+It will ask you if you want auto quality (75) or not...
+
+```sh
+  Auto quality?(y/n); y
+```
+
+```sh
+  Auto quality?(y/n); n
+  Pick the quality(0-100):
+```
+
+... and if you want to crop the images or not:
+
+```sh
+  Crop to square?(y/n): y
+  Keep Left/Top (1), Middle (2) or Right/Bottom(3)?:
+```
+
+```sh
+  Crop to square?(y/n): n
+```
+
+Here is an example of the different crop settings (Left 1, Middle 2, Right 3):
+
+![Crop Screenshot][crop-screenshot]
+
+It will then browse all images in your '_old' folder and save the .webp images in the 'new' folder. It will output all scanned files for a better overview and then teminate:
+
+```sh
+  ./_old/toa-heftiba-U6uxileWeag-unsplash.jpg
+```
+
+![Result Screenshot][result-screenshot]
+![Comparison Screenshot][comparison-screenshot]
+
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -96,6 +147,12 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Acknowledgments
+
+Photo by [Toa Heftiba](https://unsplash.com/de/@heftiba) on [Unsplash]("https://unsplash.com/de/fotos/person-die-weisses-papier-mit-schwarzbrot-halt-U6uxileWeag)"
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -109,3 +166,6 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 [Php-url]: https://www.php.net/
 
 [prerequisite-screenshot]: images/prerequisite.png
+[crop-screenshot]: images/crop.png
+[result-screenshot]: images/result.png
+[comparison-screenshot]: images/comparison.png
