@@ -49,8 +49,8 @@ function saveImage(int $quality, int $cropSquare, GdImage $image, string $ending
         }
     }
 
-    $image = resizeImage($image);
     $image = cropImage($cropSquare, $image);
+    $image = resizeImage($image);
 
     $newImagePath = str_replace('_old', 'new', $file);
 
