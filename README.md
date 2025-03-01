@@ -133,7 +133,7 @@ It will then browse all images in your '_old' folder and save the .webp images i
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Add HEIC images
+- [ ] Add HEIC images as possible source files
 
 See the [open issues](https://github.com/smini-digital/image-converter/issues) for a full list of proposed features (and known issues).
 
@@ -149,7 +149,7 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 ## Acknowledgments
 
-Photo by [Toa Heftiba](https://unsplash.com/de/@heftiba) on [Unsplash]("https://unsplash.com/de/fotos/person-die-weisses-papier-mit-schwarzbrot-halt-U6uxileWeag)"
+Photo by [Toa Heftiba](https://unsplash.com/de/@heftiba) on [Unsplash](https://unsplash.com/de/fotos/person-die-weisses-papier-mit-schwarzbrot-halt-U6uxileWeag)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
