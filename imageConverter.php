@@ -78,7 +78,7 @@ function cropSquareInput(): int
         return 0;
     }
 
-    return readline('Keep Left/Top (1), Middle (2) or Right/Bottom(3)?: ');
+    return readline('Keep Left/Top (1), Middle (2), or Right/Bottom(3)?: ');
 }
 
 function cropImage(int $cropSquare, GdImage $image): GdImage

@@ -49,7 +49,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a simple images converter which converts .jpg/.jpeg and .png images locally on your PC to .webp images, which then can be used on websites. It also does the following:
+This simple image converter converts .jpg/.jpeg and .png images locally on your PC to .webp images, which can then be used on websites. It also does the following:
 
 * It fixes the orientation of the image
 * It resized the image so that the bigger dimension is 1920px if the image is bigger than that
@@ -57,7 +57,7 @@ This is a simple images converter which converts .jpg/.jpeg and .png images loca
 You can also adjust the following:
 
 * Adjust the image quality (Default is 75%)
-* Crop the images to squares and decide if left/top, middle or right/bottom is kept
+* Crop the images to squares and decide if left/top, middle, or right/bottom is kept
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -70,7 +70,7 @@ You can also adjust the following:
 
 ![Prerequisite Screenshot][prerequisite-screenshot]
 
-1. Download the imageConverter.php file. In the same folder create two folders: '_old' and 'new'.
+1. Download the imageConverter.php file. In the same folder, create two folders: '_old' and 'new'.
 2. Add all images you want to convert to the '_old' folder.
 
 
@@ -84,13 +84,13 @@ Make sure you have [PHP](https://www.php.net/downloads.php) installed.
 <!-- USAGE -->
 ## Usage
 
-Navigate to your main fold in your console or terminal and run the php file:
+Navigate to your main folder in your console or terminal and run the PHP file:
 
 ```sh
   php imageConverter.php
 ```
 
-It will ask you if you want auto quality (75) or not...
+It will ask if you want auto quality (75) or not...
 
 ```sh
   Auto quality?(y/n); y
@@ -105,18 +105,18 @@ It will ask you if you want auto quality (75) or not...
 
 ```sh
   Crop to square?(y/n): y
-  Keep Left/Top (1), Middle (2) or Right/Bottom(3)?:
+  Keep Left/Top (1), Middle (2), or Right/Bottom(3)?:
 ```
 
 ```sh
   Crop to square?(y/n): n
 ```
 
-Here is an example of the different crop settings (Left 1, Middle 2, Right 3):
+Here is an example of the different crop settings (Left/Top 1, Middle 2, Right/Bottom 3):
 
 ![Crop Screenshot][crop-screenshot]
 
-It will then browse all images in your '_old' folder and save the .webp images in the 'new' folder. It will output all scanned files for a better overview and then teminate:
+It will then browse all images in your '_old' folder and save the .webp images in the 'new' folder. It will output all scanned files for a better overview and then terminate:
 
 ```sh
   ./_old/toa-heftiba-U6uxileWeag-unsplash.jpg
